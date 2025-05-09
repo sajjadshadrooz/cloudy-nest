@@ -20,7 +20,7 @@ export const LinkButton = ({
     <Link
       href={href}
       className={clsx(
-        "text-sm font-bold",
+        "text-sm font-semibold",
         disabled
           ? "text-info-disable-fg-1 pointer-events-none"
           : "text-info-default-fg-1 hover:text-info-hover-fg-1 active:text-info-press-fg-1",
