@@ -1,20 +1,13 @@
 import { ReactNode } from "react";
 
-interface FieldError {
-  status: string;
-  message: string;
-}
-
 interface FieldProps {
   label: string;
   required?: boolean;
-  error?: FieldError;
+  error?: string;
   children: ReactNode;
 }
 
 export const Field = ({ label, required, error, children }: FieldProps) => {
-  const hasError = error?.status;
-
   return (
     <div className="flex flex-col gap-2">
       <label className="text-sm font-medium">
@@ -23,9 +16,9 @@ export const Field = ({ label, required, error, children }: FieldProps) => {
 
       {children}
 
-      {hasError && (
+      {error && (
         <div>
-          <p className={`text-xs text-error-fg`}>{error?.message}</p>
+          <p className={`text-xs text-error-fg font-semibold`}>{error}</p>
         </div>
       )}
     </div>
