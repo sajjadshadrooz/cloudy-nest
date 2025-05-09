@@ -18,7 +18,7 @@ export const Field = ({ label, required, error, children }: FieldProps) => {
 
       {error && (
         <div>
-          <p className={`text-xs text-error-fg font-bold`}>{error}</p>
+          <p className={`text-xs text-error-fg font-semibold`}>{error}</p>
         </div>
       )}
     </div>
