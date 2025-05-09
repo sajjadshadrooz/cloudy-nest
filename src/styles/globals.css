@@ -8,7 +8,10 @@
   --primary-hover-bg-2: #007070;
   --primary-press-bg-2: #004a4a;
 
+  --success-default-fg-1: #17b24a;
+  --success-default-bg-1: #e3f6e9;
   --error-fg: #d61e20;
+  --error-bg: #fae4e4;
   --info-default-fg-1: #0172b4;
   --info-hover-fg-1: #015687;
   --info-press-fg-1: #00395a;
@@ -30,7 +33,12 @@
   --color-primary-bg: var(--primary-bg);
   --color-primary-hover-bg-2: var(--primary-hover-bg-2);
   --color-primary-press-bg-2: var(--primary-press-bg-2);
+
+  --color-success-default-fg-1: var(--success-default-fg-1);
+  --color-success-default-bg-1: var(--success-default-bg-1);
   --color-error-fg: var(--error-fg);
+  --color-error-bg: var(--error-bg);
+
   --color-info-default-fg-1: var(--info-default-fg-1);
   --color-info-hover-fg-1: var(--info-hover-fg-1);
   --color-info-press-fg-1: var(--info-press-fg-1);
