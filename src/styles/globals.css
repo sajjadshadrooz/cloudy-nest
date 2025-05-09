@@ -6,6 +6,10 @@
   --primary-fg: #009595;
   --primary-bg: #e0f7f7;
   --error-fg: #d61e20;
+  --info-default-fg-1: #0172b4;
+  --info-hover-fg-1: #015687;
+  --info-press-fg-1: #00395a;
+  --info-disable-fg-1: #99d2f3;
 
   --neutral-default-1: #7f7f7f;
   --neutral-default-2: #cccccc;
@@ -22,6 +26,10 @@
   --color-primary-fg: var(--primary-fg);
   --color-primary-bg: var(--primary-bg);
   --color-error-fg: var(--error-fg);
+  --color-info-default-fg-1: var(--info-default-fg-1);
+  --color-info-hover-fg-1: var(--info-hover-fg-1);
+  --color-info-press-fg-1: var(--info-press-fg-1);
+  --color-info-disable-fg-1: var(--info-disable-fg-1);
 
   --color-neutral-default-1: var(--neutral-default-1);
   --color-neutral-default-2: var(--neutral-default-2);
