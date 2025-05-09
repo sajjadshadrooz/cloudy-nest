@@ -3,14 +3,29 @@
 :root {
   --background: #f0f0f0;
   --foreground: #333333;
-  --primary-fg-color: #009595;
-  --primary-bg-color: #e0f7f7;
+  --primary-fg: #009595;
+  --primary-bg: #e0f7f7;
+  --error-fg: #d61e20;
+
+  --neutral-default-1: #7f7f7f;
+  --neutral-default-2: #cccccc;
+  --neutral-hover-2: #b3b3b3;
+  --neutral-disable-fg-1: #cccccc;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-inter);
+
+  --color-primary-fg: var(--primary-fg);
+  --color-primary-bg: var(--primary-bg);
+  --color-error-fg: var(--error-fg);
+
+  --color-neutral-default-1: var(--neutral-default-1);
+  --color-neutral-default-2: var(--neutral-default-2);
+  --color-neutral-hover-2: var(--neutral-hover-2);
+  --color-neutral-disable-fg-1: var(--neutral-disable-fg-1);
 }
 
 body {
