@@ -9,6 +9,7 @@
 
   --neutral-default-1: #7f7f7f;
   --neutral-default-2: #cccccc;
+  --neutral-default-3: #e6e6e6;
   --neutral-hover-2: #b3b3b3;
   --neutral-disable-fg-1: #cccccc;
 }
@@ -24,6 +25,7 @@
 
   --color-neutral-default-1: var(--neutral-default-1);
   --color-neutral-default-2: var(--neutral-default-2);
+  --color-neutral-default-3: var(--neutral-default-3);
   --color-neutral-hover-2: var(--neutral-hover-2);
   --color-neutral-disable-fg-1: var(--neutral-disable-fg-1);
 }
