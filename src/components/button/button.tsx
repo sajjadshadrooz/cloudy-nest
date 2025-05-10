@@ -2,12 +2,11 @@ import { ButtonHTMLAttributes, ReactNode } from "react";
 
 import clsx from "clsx";
 
-import CheckCircleIcon from "@/icons/checkCircle";
 import { SpinnerIcon } from "@/icons/spinner";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "danger" | "info";
-  icon?: boolean;
+  icon?: ReactNode;
   loading?: boolean;
   disabled?: boolean;
   children?: ReactNode;
@@ -45,7 +44,7 @@ export const Button = ({
         className
       )}
     >
-      {loading ? <SpinnerIcon /> : icon ? <CheckCircleIcon /> : children}
+      {loading ? <SpinnerIcon /> : icon ? icon : children}
     </button>
   );
 };
