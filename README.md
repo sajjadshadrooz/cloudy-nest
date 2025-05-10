@@ -12,6 +12,15 @@ npm i
 npm run dev
 ```
 
+### Env File
+
+```sh
+NEXT_PUBLIC_BASE_URL = localhost:3000
+NEXT_PUBLIC_API_BASE_URL = https://api-3281216083-arvancloud-challenge.apps.ir-central1.arvancaas.ir/api
+
+NEXT_PUBLIC_APP_NAME = 'Arvancloud Challenge'
+```
+
 ### Code Clean
 
 - Install Prettier in VSCode
