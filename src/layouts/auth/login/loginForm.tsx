@@ -5,24 +5,33 @@ import { Formik, Form } from "formik";
 import { LinkButton } from "@/components/linkButton/linkButton";
 import { Button } from "@/components/button/button";
 import { FormikField } from "@/components/formikField/formikField";
+import { useLoginAPI } from "@/services/hooks/auth/login";
 
 import { loginValidationSchema } from "./utils/validation";
 
 const LoginForm = () => {
+  const { login } = useLoginAPI();
+
   const initialValues = {
     email: "",
     password: "",
   };
 
-  const handleSubmit = (values: typeof initialValues) => {
-    console.log("🟢 Form submitted", values);
+  const handleSubmit = async (
+    values: typeof initialValues,
+    setSubmitting: any
+  ) => {
+    await login(values);
+    setSubmitting(false);
   };
 
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={loginValidationSchema}
-      onSubmit={handleSubmit}
+      onSubmit={(values, { setSubmitting }) => {
+        handleSubmit(values, setSubmitting);
+      }}
     >
       {({ errors, touched, isSubmitting }) => (
         <Form>
