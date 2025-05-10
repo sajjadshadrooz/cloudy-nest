@@ -10,8 +10,10 @@ export default function DashboardLayout({
   return (
     <div className="w-full">
       <DashboardHeader title={applicationName} />
-      <Sidebar />
-      {children}
+      <div className="flex">
+        <Sidebar />
+        <div className="p-6 w-full">{children}</div>
+      </div>
     </div>
   );
 }

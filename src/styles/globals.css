@@ -8,6 +8,7 @@
   --primary-hover-bg-1: #d6f4f4;
   --primary-hover-bg-2: #007070;
   --primary-press-bg-2: #004a4a;
+  --primary-disable-bg-2: #99e3e3;
 
   --success-default-fg-1: #17b24a;
   --success-default-bg-1: #e3f6e9;
@@ -21,6 +22,7 @@
   --neutral-default-1: #7f7f7f;
   --neutral-default-2: #cccccc;
   --neutral-default-3: #e6e6e6;
+  --neutral-default-bg-1: #ffffff;
   --neutral-hover-2: #b3b3b3;
   --neutral-press-2: #999999;
   --neutral-disable-fg-1: #cccccc;
@@ -38,6 +40,7 @@
   --color-primary-hover-bg-1: var(--primary-hover-bg-1);
   --color-primary-hover-bg-2: var(--primary-hover-bg-2);
   --color-primary-press-bg-2: var(--primary-press-bg-2);
+  --color-primary-disable-bg-2: var(--primary-disable-bg-2);
 
   --color-success-default-fg-1: var(--success-default-fg-1);
   --color-success-default-bg-1: var(--success-default-bg-1);
@@ -52,6 +55,7 @@
   --color-neutral-default-1: var(--neutral-default-1);
   --color-neutral-default-2: var(--neutral-default-2);
   --color-neutral-default-3: var(--neutral-default-3);
+  --color-neutral-default-bg-1: var(--neutral-default-bg-1);
   --color-neutral-hover-2: var(--neutral-hover-2);
   --color-neutral-press-2: var(--neutral-press-2);
   --color-neutral-hover-fg-1: var(--neutral-hover-fg-1);
