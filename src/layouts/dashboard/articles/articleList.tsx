@@ -6,7 +6,11 @@ import { Modal } from "@/components/modal/modal";
 import { useState } from "react";
 import { Dialog } from "@/components/modal/dialog";
 
-export const ArticleList = () => {
+interface ArticleProps {
+  currentPage?: string | string[] | number;
+}
+
+export const ArticleList = ({ currentPage = 1 }: ArticleProps) => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(true);
 
   const columns = [
