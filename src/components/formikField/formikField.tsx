@@ -2,10 +2,11 @@ import { Field as MainFormikField } from "formik";
 
 import { Field } from "@/components/field/field";
 import { Input } from "@/components/input/input";
+import { Textarea } from "../textarea/textarea";
 
 interface FormikFieldProps {
   name: string;
-  type: "email" | "password" | "text";
+  type: "email" | "password" | "text" | "textarea";
   label: string;
   required?: boolean;
   touched?: boolean;
@@ -29,14 +30,18 @@ export const FormikField = ({
       error={touched && error ? error : undefined}
     >
       <MainFormikField name={name}>
-        {({ field }: any) => (
-          <Input
-            type={type}
-            placeholder={placeholder}
-            {...field}
-            hasError={!!(touched && error)}
-          />
-        )}
+        {({ field }: any) =>
+          type === "textarea" ? (
+            <Textarea {...field} placeholder={placeholder} />
+          ) : (
+            <Input
+              type={type}
+              placeholder={placeholder}
+              {...field}
+              hasError={!!(touched && error)}
+            />
+          )
+        }
       </MainFormikField>
     </Field>
   );
