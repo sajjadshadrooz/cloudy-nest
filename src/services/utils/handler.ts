@@ -20,9 +20,7 @@ export const authorizationRequired = (
     "error"
   );
 
-  setTimeout(() => {
-    window.location.replace(`${baseUrl}/login`);
-  }, 2000);
+  window.location.replace(`${baseUrl}/login`);
 };
 
 // ^200 handler
@@ -41,21 +39,25 @@ export const successHandler = (
 export const errorHandlerAPI = (showToast: any, error: any) => {
   if (error.response) {
     const { status, data } = error.response;
-    const { errors } = data;
+    const { errors, message } = data;
 
-    const message = extractErrors(errors);
+    const description = message || extractErrors(errors);
 
     switch (status) {
       case 422:
-        showToast("Bad Request!", message ?? "Check your parameters.", "error");
+        showToast(
+          "Bad Request!",
+          description ?? "Check your parameters.",
+          "error"
+        );
         break;
 
       case 401:
-        authorizationRequired(message);
+        authorizationRequired(showToast, description);
         break;
 
       case 403:
-        showToast("Access denied!", message, "error");
+        showToast("Access denied!", description, "error");
         break;
 
       default:
@@ -66,7 +68,7 @@ export const errorHandlerAPI = (showToast: any, error: any) => {
     }
   } else if (error.request) {
     if (error.code === "ERR_NETWORK") {
-      showToast("Network error!", "عدم دسترسی به شبکه اینترنت.", "error");
+      showToast("Network error!", "Lack of access to Server.", "error");
     } else {
       showToast("Server error!", "Something happend in server.", "error");
     }

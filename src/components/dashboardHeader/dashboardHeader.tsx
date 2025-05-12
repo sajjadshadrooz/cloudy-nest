@@ -1,8 +1,11 @@
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, useContext } from "react";
 import clsx from "clsx";
+
+import { ProfileContext } from "@/contexts/profileContext";
 import { Button } from "../button/button";
+import { useUserAPI } from "@/services/hooks/auth/currentUser";
 
 interface DashboardHeaderProps {
   title: string;
@@ -15,6 +18,10 @@ export const DashboardHeader = ({
   action,
   className,
 }: DashboardHeaderProps) => {
+  const { logout } = useUserAPI();
+  const { profile } = useContext(ProfileContext);
+  const { username } = profile;
+
   return (
     <header
       className={clsx(
@@ -22,14 +29,16 @@ export const DashboardHeader = ({
         className
       )}
     >
-      <div className="text-sm">
-        Wellcome <span className="font-semibold">User</span>
+      <div className="text-sm hidden lg:flex gap-1">
+        Wellcome <span className="font-semibold">{username}</span>
       </div>
       <div className="rounded-sm text-[16px] font-semibold bg-background p-2">
         {title}
       </div>
       <div>
-        <Button variant="info">Log out</Button>
+        <Button onClick={logout} variant="info">
+          Log out
+        </Button>
       </div>
     </header>
   );
