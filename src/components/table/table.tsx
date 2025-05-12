@@ -20,7 +20,7 @@ type Props = {
 
 export default function Table({ columns, data, actions = [] }: Props) {
   return (
-    <div>
+    <div className="overflow-x-auto">
       <table className="min-w-full table-auto text-sm text-left">
         <thead className="bg-background text-lg font-semibold border-b-1 border-neutral-default-3">
           <tr>

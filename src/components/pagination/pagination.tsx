@@ -1,10 +1,9 @@
 "use client";
 
 import React from "react";
-import clsx from "clsx";
 import { ChevronLeftIcon } from "@/icons/chevronLeft";
 import ChevronRightIcon from "@/icons/chevronRight";
-import EllipsisSVG from "@/icons/ellipsis";
+import PaginationButton from "./paginationButton";
 
 type Props = {
   currentPage: number;
@@ -53,49 +52,27 @@ export default function Pagination({
 
   return (
     <div className="w-full flex items-center justify-end">
-      {" "}
       <div className="w-fit flex items-center gap-2 border border-neutral-default-2 rounded-lg p-1 font-semibold text-sm">
-        <button
-          className={clsx(
-            "px-2",
-            disabled && "text-gray-300 cursor-not-allowed"
-          )}
-          onClick={() => handleClick(currentPage - 1)}
+        <PaginationButton
+          label={<ChevronLeftIcon />}
           disabled={disabled || currentPage === 1}
-        >
-          <ChevronLeftIcon />
-        </button>
-
+          onClick={() => handleClick(currentPage - 1)}
+        />
         {createPages().map((page, i) => (
-          <button
+          <PaginationButton
             key={i}
+            currentPage={currentPage}
+            label={page}
+            isActive={page === currentPage}
+            disabled={disabled}
             onClick={() => handleClick(page)}
-            disabled={disabled || page === "..."}
-            className={clsx(
-              "min-w-8 h-8 p-1 rounded-lg flex items-center justify-center",
-              page === currentPage && "bg-primary-fg text-white",
-              page === currentPage &&
-                disabled &&
-                "bg-primary-disable-bg-2 text-white",
-              page !== currentPage &&
-                "hover:bg-background active:bg-neutral-press-bg-1",
-              disabled && "text-neutral-disable-fg-1 cursor-not-allowed"
-            )}
-          >
-            {page === "..." ? <EllipsisSVG /> : page}
-          </button>
+          />
         ))}
-
-        <button
-          className={clsx(
-            "px-2",
-            disabled && "text-gray-300 cursor-not-allowed"
-          )}
-          onClick={() => handleClick(currentPage + 1)}
+        <PaginationButton
+          label={<ChevronRightIcon />}
           disabled={disabled || currentPage === totalPages}
-        >
-          <ChevronRightIcon />
-        </button>
+          onClick={() => handleClick(currentPage + 1)}
+        />
       </div>
     </div>
   );

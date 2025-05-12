@@ -8,9 +8,9 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="w-full">
+    <div className="w-full h-full">
       <DashboardHeader title={applicationName} />
-      <div className="flex">
+      <div className="flex h-full">
         <Sidebar />
         <div className="p-6 w-full">{children}</div>
       </div>

@@ -2,8 +2,13 @@
 
 import Table from "@/components/table/table";
 import Pagination from "@/components/pagination/pagination";
+import { Modal } from "@/components/modal/modal";
+import { useState } from "react";
+import { Dialog } from "@/components/modal/dialog";
 
 export const ArticleList = () => {
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(true);
+
   const columns = [
     { key: "id", label: "#" },
     { key: "title", label: "Title" },
@@ -36,6 +41,20 @@ export const ArticleList = () => {
         onPageChange={(page) => console.log("Go to page:", page)}
         disabled={false}
       />
+      <Modal
+        title="Delete Article"
+        action={() => setIsDeleteModalOpen(false)}
+        actionTitle="Delete"
+        isOpen={isDeleteModalOpen}
+        size="small"
+        onClose={() => setIsDeleteModalOpen(false)}
+        negative
+      >
+        <Dialog
+          negative
+          dialog="Are you sure you want to delete this article?"
+        />
+      </Modal>
     </div>
   );
 };
