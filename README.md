@@ -1,9 +1,21 @@
-# ⛄ Cloudy Nest - The challenge of managing the ArvanCloud blogs.
+# ⛄ Cloudy Nest - The challenge of managing the blogs.
 
 **Software version:** 0.1.0  
 **Node.js version:** 22.14.0 (LTS)  
 **Next.js version:** 15.3.2  
 **React.js version:** 19.0.0
+
+## Features
+
+- routing: App routing with 1 main layout and 2 sub main layout for Auth & Dashboard.
+- Rendering mechanism: globaly client side base on a dashboard need to render.
+- API connection: Restful base on axios, Authentication is token base that we stored in localstorage, every api used in a special hooks to managing them rapid & cleaner.
+- Access controlling: basic access control base on access to layouts, without permission handling.
+- Forms Controlling: Formik & yup used for managing forms and input validations.
+- Error handlers: used default error boundry for general errors, custom api error handlers for connecting to back-end, that is in services utils directory.
+- state managing: context used for keep user information, components are function base & used useState hook.
+- styles: tailwind.
+
 
 ## Development
 
