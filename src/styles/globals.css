@@ -28,6 +28,8 @@
   --neutral-disable-fg-1: #cccccc;
   --neutral-hover-fg-1: #191919;
   --neutral-press-bg-1: #ebebeb;
+  --neutral-hover-st-1: #666666;
+  --neutral-press-st-1: #4c4c4c;
 }
 
 @theme inline {
@@ -61,6 +63,8 @@
   --color-neutral-hover-fg-1: var(--neutral-hover-fg-1);
   --color-neutral-disable-fg-1: var(--neutral-disable-fg-1);
   --color-neutral-press-bg-1: var(--neutral-press-bg-1);
+  --color-neutral-hover-st-1: var(--neutral-hover-st-1);
+  --color-neutral-press-st-1: var(--neutral-press-st-1);
 }
 
 body {
