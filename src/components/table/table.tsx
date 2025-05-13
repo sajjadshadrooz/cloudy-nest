@@ -1,10 +1,13 @@
 "use client";
 
+import Link from "next/link";
 import TableActions from "./tableAction";
 
 type Column = {
   key: string;
   label: string;
+  type?: string;
+  link?: string;
 };
 
 type Action = {
@@ -46,8 +49,19 @@ export default function Table({ columns, data, actions = [] }: Props) {
                     </div>
                   </td>
                 ) : (
-                  <td key={col.key} className="px-3 py-2 text-sm">
-                    {row[col.key]}
+                  <td
+                    key={col.key}
+                    className={`px-3 py-2 text-sm ${
+                      col.type === "primary" ? "font-semibold" : ""
+                    }`}
+                  >
+                    {col.link ? (
+                      <Link href={`${col.link}/${row.slug}`}>
+                        {row[col.key]}
+                      </Link>
+                    ) : (
+                      row[col.key]
+                    )}
                   </td>
                 )
               )}

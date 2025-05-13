@@ -1,3 +1,4 @@
+import CheckIcon from "@/icons/check";
 import { useEffect, useRef } from "react";
 
 interface CheckboxProps {
@@ -32,31 +33,25 @@ export const Checkbox = ({
         disabled={disabled}
         onChange={(e) => onChange?.(e.target.checked)}
         className={`
-          appearance-none w-6 h-6 rounded-md border
+          appearance-none w-5 h-5 rounded-md
           flex items-center justify-center
           transition-colors duration-200
           ${
-            disabled
+            disabled && checked
+              ? "bg-primary-disable-bg-2 text-white cursor-not-allowed"
+              : disabled
               ? "bg-gray-100 border-gray-300 cursor-not-allowed"
               : checked
-              ? "bg-teal-600 border-teal-600 text-white"
-              : "bg-white border-gray-400 hover:border-teal-500"
+              ? "bg-primary-fg hover:bg-primary-hover-bg-2 active:bg-primary-press-bg-2 text-white"
+              : "bg-white border-2 border-neutral-default-1 hover:bg-background active:bg-neutral-press-bg-1 hover:border-neutral-hover-st-1 active:border-neutral-press-st-1"
           }
         `}
       />
-      <span className=" w-6 h-6 absolute left-0 flex items-center justify-center pointer-events-none">
+      <span className=" w-5 h-5 absolute left-0 flex items-center justify-center pointer-events-none">
         {indeterminate ? (
           <div className="w-3 h-0.5 bg-white" />
         ) : checked ? (
-          <svg
-            className="w-4 h-4 text-white"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="3"
-            viewBox="0 0 24 24"
-          >
-            <path d="M5 13l4 4L19 7" />
-          </svg>
+          <CheckIcon />
         ) : null}
       </span>
       {label}

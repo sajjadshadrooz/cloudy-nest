@@ -32,7 +32,11 @@ export const FormikField = ({
       <MainFormikField name={name}>
         {({ field }: any) =>
           type === "textarea" ? (
-            <Textarea {...field} placeholder={placeholder} />
+            <Textarea
+              hasError={!!(touched && error)}
+              {...field}
+              placeholder={placeholder}
+            />
           ) : (
             <Input
               type={type}

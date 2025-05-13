@@ -4,20 +4,25 @@ import React from "react";
 import { ChevronLeftIcon } from "@/icons/chevronLeft";
 import ChevronRightIcon from "@/icons/chevronRight";
 import PaginationButton from "./paginationButton";
+import { getTotalPages } from "./utils/functions";
 
 type Props = {
   currentPage: number;
-  totalPages: number;
+  totalCount: number;
+  perPageCount?: number;
   onPageChange: (page: number) => void;
   disabled?: boolean;
 };
 
 export default function Pagination({
   currentPage,
-  totalPages,
+  totalCount,
   onPageChange,
+  perPageCount = 10,
   disabled = false,
 }: Props) {
+  const totalPages = getTotalPages(totalCount, perPageCount);
+
   const createPages = () => {
     const pages: (number | string)[] = [];
 
@@ -63,8 +68,7 @@ export default function Pagination({
             key={i}
             currentPage={currentPage}
             label={page}
-            isActive={page === currentPage}
-            disabled={disabled}
+            disabled={disabled || totalCount <= perPageCount}
             onClick={() => handleClick(page)}
           />
         ))}

@@ -37,42 +37,46 @@ export const successHandler = (
 };
 
 export const errorHandlerAPI = (showToast: any, error: any) => {
-  if (error.response) {
-    const { status, data } = error.response;
-    const { errors, message } = data;
+  try {
+    if (error.response) {
+      const { status, data } = error.response;
+      const { errors, message } = data;
 
-    const description = message || extractErrors(errors);
+      const description = message || extractErrors(errors);
 
-    switch (status) {
-      case 422:
-        showToast(
-          "Bad Request!",
-          description ?? "Check your parameters.",
-          "error"
-        );
-        break;
+      switch (status) {
+        case 422:
+          showToast(
+            "Bad Request!",
+            description ?? "Check your parameters.",
+            "error"
+          );
+          break;
 
-      case 401:
-        authorizationRequired(showToast, description);
-        break;
+        case 401:
+          authorizationRequired(showToast, description);
+          break;
 
-      case 403:
-        showToast("Access denied!", description, "error");
-        break;
+        case 403:
+          showToast("Access denied!", description, "error");
+          break;
 
-      default:
-        if (status >= 500) {
-          showToast("Server error!", "Something happend in server.", "error");
-        }
-        break;
-    }
-  } else if (error.request) {
-    if (error.code === "ERR_NETWORK") {
-      showToast("Network error!", "Lack of access to Server.", "error");
+        default:
+          if (status >= 500) {
+            showToast("Server error!", "Something happend in server.", "error");
+          }
+          break;
+      }
+    } else if (error.request) {
+      if (error.code === "ERR_NETWORK") {
+        showToast("Network error!", "Lack of access to Server.", "error");
+      } else {
+        showToast("Server error!", "Something happend in server.", "error");
+      }
     } else {
-      showToast("Server error!", "Something happend in server.", "error");
+      showToast("Internal error!", "Something happend wrong.", "error");
     }
-  } else {
+  } catch {
     showToast("Internal error!", "Something happend wrong.", "error");
   }
 };

@@ -7,10 +7,11 @@ import { ArticleList } from "@/layouts/dashboard/articles/articleList";
 
 export default function Articles() {
   const { page } = useParams();
+  const pageNumber = Number.isNaN(Number(page)) ? 1 : Number(page);
 
   return (
     <Section title="All Posts">
-      <ArticleList currentPage={page} />
+      <ArticleList currentPage={pageNumber} />
     </Section>
   );
 }
