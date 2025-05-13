@@ -24,7 +24,7 @@ export const Checkbox = ({
   }, [indeterminate]);
 
   return (
-    <label className="inline-flex items-center space-x-2">
+    <label className="relative inline-flex items-center space-x-2">
       <input
         ref={ref}
         type="checkbox"
@@ -44,8 +44,7 @@ export const Checkbox = ({
           }
         `}
       />
-      {label}
-      <span className="-ml-12 w-6 h-6 flex items-center justify-center pointer-events-none">
+      <span className=" w-6 h-6 absolute left-0 flex items-center justify-center pointer-events-none">
         {indeterminate ? (
           <div className="w-3 h-0.5 bg-white" />
         ) : checked ? (
@@ -60,6 +59,7 @@ export const Checkbox = ({
           </svg>
         ) : null}
       </span>
+      {label}
     </label>
   );
 };
