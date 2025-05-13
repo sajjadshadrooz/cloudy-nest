@@ -9,7 +9,6 @@ import { useArticleAPI } from "@/services/hooks/articles/article";
 import { getExcerpt } from "./utils/functions";
 import { formatDate } from "./utils/validations";
 import { redirect } from "next/navigation";
-import { deleteArticlesAPI } from "@/services/api/articles";
 
 interface ArticleProps {
   currentPage?: number;
