@@ -4,7 +4,6 @@ import EllipsisSVG from "@/icons/ellipsis";
 
 type Props = {
   label: string | number | ReactNode;
-  isActive?: boolean;
   disabled?: boolean;
   currentPage?: string | number;
   onClick?: () => void;
@@ -12,7 +11,6 @@ type Props = {
 
 export default function PaginationButton({
   label,
-  isActive,
   disabled,
   currentPage = "",
   onClick,
@@ -26,7 +24,7 @@ export default function PaginationButton({
         label === currentPage && "bg-primary-fg text-white",
         label === currentPage &&
           disabled &&
-          "bg-primary-disable-bg-2 text-white",
+          "!bg-primary-disable-bg-2 text-white",
         label !== currentPage &&
           "hover:bg-background active:bg-neutral-press-bg-1",
         disabled && "text-neutral-disable-fg-1 cursor-not-allowed"
