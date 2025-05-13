@@ -26,6 +26,7 @@ export const Button = ({
 
   return (
     <button
+      type={type}
       {...props}
       className={clsx(
         "rounded-xl p-2.5 flex items-center justify-center text-sm font-semibold",

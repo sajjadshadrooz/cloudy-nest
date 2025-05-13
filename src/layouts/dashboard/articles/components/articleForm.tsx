@@ -37,14 +37,7 @@ export const ArticleForm = ({
       }}
       enableReinitialize
     >
-      {({
-        values,
-        setFieldValue,
-        errors,
-        touched,
-        isSubmitting,
-        handleSubmit,
-      }) => (
+      {({ values, setFieldValue, errors, touched, isSubmitting }) => (
         <Form>
           <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="col-span-1 lg:col-span-2">
@@ -77,10 +70,7 @@ export const ArticleForm = ({
                     required
                   />
                   <Button
-                    type="button"
-                    onClick={() => {
-                      handleSubmit();
-                    }}
+                    type="submit"
                     loading={isSubmitting}
                     className="w-fit"
                   >
