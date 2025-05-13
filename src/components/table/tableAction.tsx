@@ -12,9 +12,10 @@ type Action = {
 
 type Props = {
   actions: Action[];
+  loading?: boolean;
 };
 
-export default function TableActions({ actions }: Props) {
+export default function TableActions({ actions, loading = false }: Props) {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -37,8 +38,8 @@ export default function TableActions({ actions }: Props) {
         icon={<EllipsisSVG />}
       />
       {open && (
-        <div className="absolute right-10 top-10 mt-2 z-10">
-          <Menu items={actions} loading={true} />
+        <div className="absolute right-0 top-10 mt-2 z-10">
+          <Menu items={actions} loading={loading} />
         </div>
       )}
     </div>
