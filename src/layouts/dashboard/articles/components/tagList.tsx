@@ -4,16 +4,17 @@ import { Checkbox } from "@/components/checkbox/checkbox";
 import { Field } from "@/components/field/field";
 import { Input } from "@/components/input/input";
 import { useTagAPI } from "@/services/hooks/articles/tag";
-import { postTagsAPI } from "@/services/api/tag";
 
 export const TagsList = ({
   values,
   setFieldValue,
+  disabled = false,
 }: {
   values: any;
   setFieldValue: any;
+  disabled?: boolean;
 }) => {
-  const { getTags, postTags } = useTagAPI();
+  const { getTags } = useTagAPI();
 
   const [load, setLoad] = useState(true);
   const [tags, setTags] = useState<string[]>([]);
@@ -23,7 +24,7 @@ export const TagsList = ({
     if (!inputValue.trim()) return;
 
     setTags((prev) => [...prev, inputValue].sort());
-    setFieldValue("tags", [...values.tags, inputValue]);
+    setFieldValue("tagList", [...values.tagList, inputValue]);
     setInputValue("");
   };
 
@@ -41,6 +42,7 @@ export const TagsList = ({
     <div className="col-span-1 p-6 bg-white rounded-lg flex flex-col gap-6 h-fit">
       <Field label="Tags">
         <Input
+          disabled={disabled}
           placeholder="New tag"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
@@ -55,15 +57,16 @@ export const TagsList = ({
         {tags.map((item, index) => {
           return (
             <Checkbox
-              checked={values.tags.includes(item)}
+              disabled={disabled}
+              checked={values.tagList.includes(item)}
               onChange={() => {
-                if (values.tags.includes(item)) {
+                if (values.tagList.includes(item)) {
                   setFieldValue(
-                    "tags",
-                    values.tags.filter((itm: string) => itm !== item)
+                    "tagList",
+                    values.tagList.filter((itm: string) => itm !== item)
                   );
                 } else {
-                  setFieldValue("tags", [...values.tags, item]);
+                  setFieldValue("tagList", [...values.tagList, item]);
                 }
               }}
               key={index}

@@ -1,10 +1,8 @@
 "use client";
 
 import { useToast } from "@/contexts/toastContext";
-import { errorHandlerAPI, successHandler } from "@/services/utils/handler";
-import { baseUrl } from "@/configs/setting";
-import { getTagsAPI, postTagsAPI } from "@/services/api/tag";
-import { TagAPIInterface } from "@/services/types/tag";
+import { errorHandlerAPI } from "@/services/utils/handler";
+import { getTagsAPI } from "@/services/api/tag";
 
 export const useTagAPI = () => {
   const { showToast } = useToast();
@@ -20,16 +18,5 @@ export const useTagAPI = () => {
     }
   };
 
-  const postTags = async (title: string) => {
-    try {
-      const data = await postTagsAPI({ title });
-      const { tags } = data;
-
-      return tags || [];
-    } catch (err: any) {
-      errorHandlerAPI(showToast, err);
-    }
-  };
-
-  return { getTags, postTags };
+  return { getTags };
 };
