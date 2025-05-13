@@ -6,12 +6,24 @@ import { Field } from "@/components/field/field";
 import { FormikField } from "@/components/formikField/formikField";
 import { Input } from "@/components/input/input";
 import { Section } from "@/components/section/section";
+import { useTagAPI } from "@/services/hooks/articles/tag";
 import { Form, Formik } from "formik";
+import { useEffect, useState } from "react";
+import { TagsList } from "./components/tagList";
+import { title } from "process";
 
 export const ArticleCreation = () => {
   return (
-    <Formik onSubmit={() => {}} initialValues={{}}>
-      {({ errors, touched, isSubmitting }) => (
+    <Formik
+      onSubmit={() => {}}
+      initialValues={{
+        title: "",
+        description: "",
+        body: "",
+        tags: [],
+      }}
+    >
+      {({ values, setFieldValue, errors, touched, isSubmitting }) => (
         <Form>
           <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="col-span-1 lg:col-span-2">
@@ -22,29 +34,38 @@ export const ArticleCreation = () => {
                     type="text"
                     label="Title"
                     placeholder="Title"
+                    error={errors.title}
+                    touched={touched.title}
+                    required
                   />
                   <FormikField
                     name="description"
                     type="text"
                     label="Description"
                     placeholder="Description"
+                    error={errors.description}
+                    touched={touched.description}
+                    required
                   />
-                  <FormikField name="body" type="textarea" label="Body" />
-                  <Button title="Submit" className="w-fit">
+                  <FormikField
+                    name="body"
+                    type="textarea"
+                    label="Body"
+                    error={errors.description}
+                    touched={touched.description}
+                    required
+                  />
+                  <Button
+                    type="submit"
+                    loading={isSubmitting}
+                    className="w-fit"
+                  >
                     Submit
                   </Button>
                 </div>
               </Section>
             </div>
-            <div className="col-span-1 p-6 bg-white rounded-lg flex flex-col gap-6 h-fit">
-              <Field label="Tags">
-                <Input placeholder="New tag" />
-              </Field>
-              <div className="p-4 flex flex-col gap-2 border border-neutral-default-3 rounded-xl">
-                <Checkbox label="tag" />
-                <Checkbox label="tag" checked />
-              </div>
-            </div>
+            <TagsList values={values} setFieldValue={setFieldValue} />
           </div>
         </Form>
       )}

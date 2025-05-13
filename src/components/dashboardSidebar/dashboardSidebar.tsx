@@ -14,22 +14,25 @@ export default function Sidebar() {
 
   return (
     <>
-      <div className="md:hidden p-2">
-        <button onClick={toggle}>{isOpen ? "X" : "|||"}</button>
+      <div className="relative w-fit lg:hidden">
+        <div className="absolute top-0 -mt-13 p-2">
+          <button className="cursor-pointer" onClick={toggle}>
+            |||
+          </button>
+        </div>
       </div>
-
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/40 z-30 md:hidden"
+          className="fixed inset-0 bg-black/40 z-30 lg:hidden"
           onClick={toggle}
         />
       )}
 
       <aside
         className={clsx(
-          "fixed border-l-1 border-neutral-default-3 z-40 top-0 sidebar-desktop h-auto bottom-0 left-0 w-60 bg-white shadow-lg p-4 transition-transform md:translate-x-0",
+          "fixed border-l-1 border-neutral-default-3 z-40 top-0 sidebar-desktop h-auto bottom-0 left-0 w-60 bg-white shadow-lg p-4 transition-transform lg:translate-x-0",
           isOpen ? "translate-x-0" : "-translate-x-full",
-          "md:static md:shadow-none"
+          "lg:static lg:shadow-none"
         )}
       >
         <nav className="flex flex-col gap-2">
